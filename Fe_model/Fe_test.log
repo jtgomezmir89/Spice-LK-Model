@@ -1,6 +1,6 @@
 LTspice 24.0.12 for Windows
 Circuit: * C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\Fe_test.asc
-Start Time: Tue Nov  5 17:01:20 2024
+Start Time: Tue Nov 12 12:27:38 2024
 solver = Normal
 Maximum thread count: 20
 tnom = 27
@@ -8,5 +8,5 @@ temp = 27
 method = modified trap
 WARNING: Less than two connections to node q.  This node is used by b1.
 .OP point found by inspection.
-Total elapsed time: 38.631 seconds.
+Total elapsed time: 49.003 seconds.
 
