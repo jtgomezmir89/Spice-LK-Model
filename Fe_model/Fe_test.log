@@ -1,6 +1,6 @@
 LTspice 24.0.12 for Windows
 Circuit: * C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\Fe_test.asc
-Start Time: Wed Nov 13 10:33:43 2024
+Start Time: Wed Nov 13 17:09:03 2024
 solver = Normal
 Maximum thread count: 20
 
@@ -12,7 +12,79 @@ WARNING: Less than two connections to node q.  This node is used by b1.
 
 
 
+.step taut=1.25892541179417e-09
+
+
+
+.step taut=1.58489319246111e-09
+
+
+
+.step taut=1.99526231496888e-09
+
+
+
+.step taut=2.51188643150958e-09
+
+
+
+.step taut=3.16227766016838e-09
+
+
+
+.step taut=3.98107170553497e-09
+
+
+
+.step taut=5.01187233627272e-09
+
+
+
+.step taut=6.30957344480194e-09
+
+
+
+.step taut=7.94328234724282e-09
+
+
+
 .step taut=1e-08
+
+
+
+.step taut=1.25892541179417e-08
+
+
+
+.step taut=1.58489319246111e-08
+
+
+
+.step taut=1.99526231496888e-08
+
+
+
+.step taut=2.51188643150958e-08
+
+
+
+.step taut=3.16227766016838e-08
+
+
+
+.step taut=3.98107170553498e-08
+
+
+
+.step taut=5.01187233627273e-08
+
+
+
+.step taut=6.30957344480194e-08
+
+
+
+.step taut=7.94328234724282e-08
 
 
 
@@ -20,14 +92,110 @@ WARNING: Less than two connections to node q.  This node is used by b1.
 
 
 
+.step taut=1.25892541179417e-07
+
+
+
+.step taut=1.58489319246112e-07
+
+
+
+.step taut=1.99526231496888e-07
+
+
+
+.step taut=2.51188643150958e-07
+
+
+
+.step taut=3.16227766016838e-07
+
+
+
+.step taut=3.98107170553498e-07
+
+
+
+.step taut=5.01187233627273e-07
+
+
+
+.step taut=6.30957344480194e-07
+
+
+
+.step taut=7.94328234724283e-07
+
+
+
 .step taut=1e-06
 
 
 
+.step taut=1.25892541179417e-06
+
+
+
+.step taut=1.58489319246112e-06
+
+
+
+.step taut=1.99526231496888e-06
+
+
+
+.step taut=2.51188643150959e-06
+
+
+
+.step taut=3.16227766016839e-06
+
+
+
+.step taut=3.98107170553498e-06
+
+
+
+.step taut=5.01187233627274e-06
+
+
+
+.step taut=6.30957344480195e-06
+
+
+
+.step taut=7.94328234724284e-06
+
+
+
 .step taut=1e-05
+
+
+
+.step taut=1.25892541179417e-05
+
+
+
+.step taut=1.58489319246112e-05
+
+
+
+.step taut=1.99526231496889e-05
+
+
+
+.step taut=2.51188643150959e-05
+
+
+
+.step taut=3.16227766016839e-05
+
+
+
+.step taut=3.98107170553498e-05
 tnom = 27
 temp = 27
 method = modified trap
 .step taut=5e-05
-Total elapsed time: 87.460 seconds.
+Total elapsed time: 779.317 seconds.
 

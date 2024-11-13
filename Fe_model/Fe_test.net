@@ -1,0 +1,10 @@
+* C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\Fe_test.asc
+V1 in 0 SINE(0 2.1 1k 0 0 0 10)
+Rsh 0 N001 0.00000001
+B1 Q 0 V=idt(-I(Rsh))
+XU1 in N001 ql qn NC_01 fe_tanh Vc=1 Qo=1 K=2.62 tau=taut
+.tran 0 1.5m 0 1e-9
+.step dec param taut 1e-9 5e-5 10
+.lib C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\fe_tanh.sp
+.backanno
+.end
