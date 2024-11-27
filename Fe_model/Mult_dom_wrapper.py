@@ -1,0 +1,18 @@
+import numpy as np
+
+#Ferroelectric parameters
+domains = 10
+
+mean_Vc = 1 
+std_dev_Vc = 0.1
+
+Qo = 1
+mean_Qo = Qo/domains
+std_dev_Qo = mean_Qo * 0.1
+
+Vc_values = np.random.normal(mean_Vc, std_dev_Vc, domains)
+Qo_values = np.random.normal(mean_Qo, std_dev_Qo, domains)
+
+Qo_values *= Qo/np.sum(Qo_values) # Nos asegurameos que los valores sumen Qo
+
+#Generate netlist
