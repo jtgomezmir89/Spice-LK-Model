@@ -1,57 +1,39 @@
 * Multi-domian SPICE model
-V1 in 0 PULSE(0 1 1.2u 0.5u 0.5u 0.5u 2u 1)
-B1 Q 0 V=idt(-I(V1))
+V1 in 0 SINE(0 2.1 1k 0 0 0 10)
+Rsh 0 N0 0.00000001
+B1 Q 0 V=idt(-I(Rsh))
 
 *Grain_0:
-Rq_0 in ini_0 0.001
-
-Br_0 Qr_0 0 V=idt(I(Rq_0))
+XU_0 in N0 fe_tanh Vc=0.9777151714554085 Qo=0.11823853722601885 K=2.62 tau=0.11823853722601885
 
 *Grain_1:
-Rq_1 in ini_1 0.001
-
-Br_1 Qr_1 0 V=idt(I(Rq_1))
+XU_1 in N0 fe_tanh Vc=1.170751650546949 Qo=0.09598743247917832 K=2.62 tau=0.09598743247917832
 
 *Grain_2:
-Rq_2 in ini_2 0.001
-
-Br_2 Qr_2 0 V=idt(I(Rq_2))
+XU_2 in N0 fe_tanh Vc=1.0201581200960494 Qo=0.09720271745313387 K=2.62 tau=0.09720271745313387
 
 *Grain_3:
-Rq_3 in ini_3 0.001
-
-Br_3 Qr_3 0 V=idt(I(Rq_3))
+XU_3 in N0 fe_tanh Vc=0.9577680865499073 Qo=0.09167598535718255 K=2.62 tau=0.09167598535718255
 
 *Grain_4:
-Rq_4 in ini_4 0.001
-
-Br_4 Qr_4 0 V=idt(I(Rq_4))
+XU_4 in N0 fe_tanh Vc=0.9266496933023997 Qo=0.10527566699499193 K=2.62 tau=0.10527566699499193
 
 *Grain_5:
-Rq_5 in ini_5 0.001
-
-Br_5 Qr_5 0 V=idt(I(Rq_5))
+XU_5 in N0 fe_tanh Vc=0.8700850309035738 Qo=0.11040658070427133 K=2.62 tau=0.11040658070427133
 
 *Grain_6:
-Rq_6 in ini_6 0.001
-
-Br_6 Qr_6 0 V=idt(I(Rq_6))
+XU_6 in N0 fe_tanh Vc=0.8485157777719095 Qo=0.09189095019986017 K=2.62 tau=0.09189095019986017
 
 *Grain_7:
-Rq_7 in ini_7 0.001
-
-Br_7 Qr_7 0 V=idt(I(Rq_7))
+XU_7 in N0 fe_tanh Vc=0.9759124514293696 Qo=0.10265082199990497 K=2.62 tau=0.10265082199990497
 
 *Grain_8:
-Rq_8 in ini_8 0.001
-
-Br_8 Qr_8 0 V=idt(I(Rq_8))
+XU_8 in N0 fe_tanh Vc=1.0474195546850482 Qo=0.09282611363061506 K=2.62 tau=0.09282611363061506
 
 *Grain_9:
-Rq_9 in ini_9 0.001
+XU_9 in N0 fe_tanh Vc=1.19775584160247 Qo=0.09384519395484284 K=2.62 tau=0.09384519395484284
+.tran 0 1.5m 0 1e-9
 
-Br_9 Qr_9 0 V=idt(I(Rq_9))
-
-.tran 0 3.8u 0.8u 0.2n
-.lib C:\Users\jtgom\Google Drive\JxCDC\Multidomain\Cfe_Landau.sp
+.lib C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\fe_tanh.sp
+.backanno
 .end
