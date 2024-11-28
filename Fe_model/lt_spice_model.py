@@ -1,4 +1,5 @@
 import Py2LTSpice
+import paths
 
 def generate_model(domains, Vc_values, Qo_values, tau_values ):
 
@@ -34,7 +35,7 @@ def generate_model(domains, Vc_values, Qo_values, tau_values ):
 
 
 def run_spice():
-
+    run(Paths.spice_path+' -b -Run Model.sp')
 
     return 
 

@@ -23,7 +23,7 @@ Qo_values = np.random.normal(mean_Qo, std_dev_Qo, domains)
 Qo_values *= Qo/np.sum(Qo_values) # Nos asegurameos que los valores sumen Qo
 
 lt_spice_model.generate_model(domains, Vc_values, Qo_values, tau_values)
-#lt_spice_model.run_spice()
+lt_spice_model.run_spice()
 #results = lt_spice_model.analyze_result()
 
 #Generate netlist
