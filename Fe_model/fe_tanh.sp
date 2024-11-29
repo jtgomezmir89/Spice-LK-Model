@@ -2,7 +2,7 @@
 
 
 * Netlist Ferroelctric
-.subckt fe_tanh in out ql qn qt PARAMS:
+.subckt fe_tanh in out PARAMS:
 +Vc=1 Qo=1 K=2.62 tau=1e-9
 
 Bref n 0 V=V(in,out)/{Vc}

@@ -1,5 +1,8 @@
 import Py2LTSpice
 import paths
+from subprocess import run
+import os
+import numpy as np
 
 def generate_model(domains, Vc_values, Qo_values, tau_values ):
 
@@ -18,10 +21,10 @@ def generate_model(domains, Vc_values, Qo_values, tau_values ):
             out.write("\n")
             out.write("*Grain_{0}:".format(i))
             out.write("\n")
-            out.write("XU_{0} in N0 fe_tanh Vc={1} Qo={2} K=2.62 tau={2}".format(i, Vc_values[i],Qo_values[i], tau_values[i]))
+            out.write("XU_"+str(i)+" in N0 fe_tanh Vc="+str(Vc_values[i])+" Qo="+str(Qo_values[i])+" K=2.62 tau="+str(tau_values[i]))
             out.write("\n")
 
-        out.write(".tran 0 1.5m 0 1e-9")  
+        out.write(".tran 0 1.5m 0 1e-8")  
         out.write("\n")    
         out.write("\n")
         out.write(r".lib C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Fe_model\fe_tanh.sp")
@@ -35,12 +38,28 @@ def generate_model(domains, Vc_values, Qo_values, tau_values ):
 
 
 def run_spice():
-    run(Paths.spice_path+' -b -Run Model.sp')
+    run(paths.spice_path+' -b -Run MD_Model.sp')
+    data = Py2LTSpice.read_ltspice_raw('MD_Model.raw')
+    #os.remove('MD_Model.raw')
+    return data
 
-    return 
 
+def analyze_result(data):
 
-def analyze_result():
+    data_sim={}
+    data_sim['time']={}
+    data_sim['in']={}
+    data_sim['q']={}
+    data_sim['i']={}
 
-    results=1
-    return results 
+    for v in range(0,len(data['variables'])):
+        expr = data['variables'][v][0]
+        if expr=='time':
+            data_sim['time'] = abs(np.array(data['values'][:,v]))
+        elif expr =='V(in)':
+            data_sim['in']=np.array(data['values'][:,v])
+        elif expr =='V(q)':
+            data_sim['q']=np.array(data['values'][:,v])
+        elif expr =='I(Rsh)':
+            data_sim['i']=np.array(data['values'][:,v])
+    return data_sim
