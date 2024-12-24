@@ -1,0 +1,29 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Osciladores\Oscilador.asc
+Start Time: Mon Dec 23 15:53:03 2024
+solver = Normal
+Maximum thread count: 20
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node nc_05.  This node is used by b:u4:cap.
+Direct Newton iteration for .op point succeeded.
+Ignoring empty pin current: Ix(u2:g)
+Ignoring empty pin current: Ix(u3:g)
+Ignoring empty pin current: Ix(u2:g)
+Ignoring empty pin current: Ix(u3:g)
+Heightened Def Con from 0.0134949 to 0.0134949
+Heightened Def Con from 0.0134949 ++to 0.0134949
+Heightened Def Con from 0.0134949 to 0.0134949
+Heightened Def Con from 0.0134949 +to 0.0134949
+Heightened Def Con from 0.0134949 to 0.0134949
+Heightened Def Con from 0.0134949 +++to 0.0134949
+Heightened Def Con from 0.0134949 ++to 0.0134949
+Heightened Def Con from 0.0134949 to 0.0134949
+Heightened Def Con from 0.0134949 ++++++to 0.0134949
+Heightened Def Con from 0.0134949 +++to 0.0134949
+Heightened Def Con from 0.0134949 +to 0.0134949
+Heightened Def Con from 0.0134949 +++to 0.0134949
+Heightened Def Con from 0.0519391 to 0.0519391
+Total elapsed time: 27.619 seconds.
+

@@ -5,7 +5,10 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import cumulative_trapezoid
+import matplotlib.cm as cm
 
+
+colormap = cm.get_cmap('winter')
 def generate_model(domains, Vc_values, Qo_values, tau_values, offset, Parasitic_resistance, Parasitic_capacitance):
 
     with open("fe_tanh_md.sp", "w") as out:
@@ -124,59 +127,66 @@ def analyze_result_dyn(data, data_sim_dyn):
 def plot_data(data_sim, data_sim_dyn, voltages, df,df2, Area, skip):
     # Create a figure and define a grid layout for subplots
     fig = plt.figure(figsize=(10, 6))
-    gs = fig.add_gridspec(3, 2, width_ratios=[3, 3], height_ratios=[1, 1, 1], wspace=0.3, hspace=0.5)
+    #gs = fig.add_gridspec(2, 2, width_ratios=[3, 3], height_ratios=[1, 1, 1], wspace=0.3, hspace=0.5)
+    gs = fig.add_gridspec(2, 2, width_ratios=[1, 1], height_ratios=[1, 1], wspace=0.3, hspace=0.1)
 
     # Subplots on the left
     ax1 = fig.add_subplot(gs[0, 0])  # in vs time
     ax2 = fig.add_subplot(gs[1, 0])  # i vs time
-    ax3 = fig.add_subplot(gs[2, 0])  # q vs time
+    #ax3 = fig.add_subplot(gs[2, 0])  # q vs time
 
     # Single subplot on the right
     ax4 = fig.add_subplot(gs[:, 1:])  # q vs in
 
     # Plotting the data
+    colors = [colormap(0), 'orangered', 'limegreen']
+    c=0
     for v in voltages:
     #    ax1.plot(data_sim[v]['time']*1000, data_sim[v]['in'])
     #    ax2.plot(data_sim[v]['time']*1000, data_sim[v]['i'])
     #    ax3.plot(data_sim[v]['time']*1000, data_sim[v]['q'])
-        ax4.plot(data_sim[v]['in'][skip:], 1e6*data_sim[v]['q'][skip:]/Area, '--')
+        ax4.plot(data_sim[v]['in'][skip:], 1e6*data_sim[v]['q'][skip:]/Area, '--', color=colors[c])
+        c+=1
+    
+    ax4.plot(df['Vforce'], 1e6*df['Charge']/Area, label='0.5V', color=colors[0])
+    ax4.plot(df['Vforce.1'], 1e6*df['Charge.1']/Area, label='1V', color=colors[1])
+    #ax4.plot(df['Vforce.2'], 1e6*df['Charge.2']/Area, label='1.5V')
+    ax4.plot(df['Vforce.3'], 1e6*df['Charge.3']/Area, label='2V', color=colors[2])
+    ax4.plot(0, 0,'--', label='Sim.', color='k')
+    ax4.plot(0, 0,'-', label='Meas.', color='k')
 
-    ax1.plot(df2['TimeOutput.3']*1e6, df2['VMeasCh1.3'])
-    ax1.plot(data_sim_dyn['time']*1e6, data_sim_dyn['in'])
-    ax2.plot(df2['TimeOutput.3']*1e6, df2['IMeasCh1.3']*1000)
-    ax2.plot(data_sim_dyn['time']*1e6, -1*data_sim_dyn['i']*1000)
-    charge = cumulative_trapezoid(df2['IMeasCh1.3'], df2['TimeOutput.3'], initial=0) 
+
+    ax1.plot(df2['TimeOutput.3']*1e6, df2['VMeasCh1.3'], color=colormap(0), label='Meas.')
+    ax1.plot(data_sim_dyn['time']*1e6, data_sim_dyn['in'], color='orangered', linestyle='--', label='Sim.')
+    ax2.plot(df2['TimeOutput.3']*1e6, df2['IMeasCh1.3']*1000, color=colormap(0))
+    ax2.plot(data_sim_dyn['time']*1e6, -1*data_sim_dyn['i']*1000, color='orangered', linestyle='--')
+    #charge = cumulative_trapezoid(df2['IMeasCh1.3'], df2['TimeOutput.3'], initial=0) 
+
 
     #ax3.plot(df2['TimeOutput.3']*1e6, 1e6*charge/Area)
     #ax3.plot(data_sim_dyn['time']*1e6, 1e6*(data_sim_dyn['q']-data_sim_dyn['q'][0])/Area)
-
-    ax1.set_xlabel("Time [$\mu s$]")
-    ax1.set_ylabel("Voltage [V]")
-
-    ax2.set_xlabel("Time [$\mu s$]")
-    ax2.set_ylabel("Current [mA]")
-
-    #ax3.set_xlabel("Time [$\mu s$]")
-    #ax3.set_ylabel("Charge [C]")
-
+    ax1.set_title("PUND Calibration", fontsize=20)
+    #ax1.set_xlabel("Time [$\mu s$]")
+    ax1.set_ylabel("Voltage [V]", fontsize=15)
+    ax2.set_xlabel("Time [$\mu s$]", fontsize=15)
+    ax2.set_ylabel("Current [mA]", fontsize=15)
 
     #ax4.plot(data_sim['in'], data_sim['q'], label="SPICE", color='red')
+    ax4.set_title("P-V Calibration", fontsize=20)
+    ax1.legend(fontsize=15)
 
-    ax4.plot(df['Vforce'], 1e6*df['Charge']/Area, label='0.5V')
-    ax4.plot(df['Vforce.1'], 1e6*df['Charge.1']/Area, label='1V')
-    #ax4.plot(df['Vforce.2'], 1e6*df['Charge.2']/Area, label='1.5V')
-    ax4.plot(df['Vforce.3'], 1e6*df['Charge.3']/Area, label='2V')
-
-
-
-
-    ax4.legend()
-
-
-    ax4.set_xlabel("Voltage [V]")
-    ax4.set_ylabel("Polarization [$\mu C$ / $cm^2$]")
-    ax4.legend()
-
+    ax4.set_xlabel("Voltage [V]", fontsize=15)
+    ax4.set_ylabel("Polarization [$\mu C$ / $cm^2$]", fontsize=15)
+    ax4.legend(fontsize=15)
+    ax1.tick_params(axis='x', labelsize=0)
+    ax1.tick_params(axis='y', labelsize=15)
+    ax2.tick_params(axis='x', labelsize=15)
+    ax2.tick_params(axis='y', labelsize=15)
+    ax4.tick_params(axis='x', labelsize=15)
+    ax4.tick_params(axis='y', labelsize=15)
+    ax1.grid(True)
+    ax2.grid(True)
+    ax4.grid(True)
     # Show the plot
     plt.tight_layout()
     plt.show()

@@ -28,12 +28,12 @@ df2 = df2.dropna(how='all', axis=1)  # Remove completely empty columns
 
 
 # --- Ferroelectric parameters --- #################################################
-domains = 100
+domains = 1000
 Area = 2500e-8 #cm^2 
 Parasitic_resistance = 5e4#4e8
 Parasitic_capacitance = 0.19e-9#0.18e-9
 
-mean_Vc = 0.45#0.4
+mean_Vc = 0.4#0.45
 std_dev_Vc = 0.3#0.18
 
 mean_tau = 1e-7 
@@ -43,7 +43,7 @@ Qo = 0.28e-9
 mean_Qo = Qo/domains
 std_dev_Qo = mean_Qo * 0.1
 Co = 0.33e-9#0.28e-9#0.33e-9
-offset = -0.2
+offset = -0.1 #-0.2
 Vc_values = np.random.normal(mean_Vc, std_dev_Vc, domains)
 #Vc_values = np.random.uniform(-0.3, 1.5, domains )
 #for i in range(0,len(Vc_values)):
@@ -54,7 +54,7 @@ plt.hist(Vc_values, bins=30, alpha=0.7, color='blue', edgecolor='black')
 tau_values = np.random.normal(mean_tau, std_dev_tau, domains)
 Qo_values = np.random.normal(mean_Qo, std_dev_Qo, domains)
 Qo_values *= Qo/np.sum(Qo_values) # Nos asegurameos que los valores sumen Qo
-Qo_values = (Co*abs(Vc_values)**1)/(np.sum(abs(Vc_values)**1)) # la cargar es proporcional al voltaje vcoercivo
+Qo_values = (Co*abs(Vc_values)**1.3)/(np.sum(abs(Vc_values)**1.3)) # la cargar es proporcional al voltaje vcoercivo
 
 lt_spice_model.generate_model(domains, Vc_values, Qo_values, tau_values, offset, Parasitic_resistance, Parasitic_capacitance)
 
@@ -83,7 +83,7 @@ data_sim_dyn = lt_spice_model.analyze_result_dyn(data, data_sim_dyn)
 
 # --- Ploting --- #################################################
 
-skip = 0 # numero de elementos que voy a saltar 
+skip = 120 # numero de elementos que voy a saltar 
 lt_spice_model.plot_data(data_sim, data_sim_dyn, voltages, df, df2, Area, skip)
 
 

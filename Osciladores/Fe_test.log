@@ -1,0 +1,13 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\Osciladores\Fe_test.asc
+Start Time: Mon Dec 23 16:28:41 2024
+solver = Normal
+Maximum thread count: 20
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node q.  This node is used by b1.
+WARNING: Less than two connections to node q1.  This node is used by b2.
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 20.021 seconds.
+
