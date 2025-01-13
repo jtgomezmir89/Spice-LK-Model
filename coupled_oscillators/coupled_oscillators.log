@@ -1,0 +1,14 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\nicol\Documents\GitHub\Spice-LK-Model\coupled_oscillators\coupled_oscillators.asc
+Start Time: Mon Jan 13 08:32:16 2025
+Error on line 1250 : .model nmos2 nmos (level=3 vto=0.7 kp=1100u lambda=0.1 w=120u l=5u tox=10n rd=10 rs=5 cgso=1n cgdo=1n cgbo=0 phi=0.7 gamma=0.6 uo=600 vmax=1e5 xj=0.15u nfs=1e11 eta=0.1 theta=0.01)
+	* Unrecognized parameter "lambda" -- ignored
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = modified trap
+Model "nmos2": Oxide thickness thinner than recommended for a level 3 MOSFET.
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 136.958 seconds.
+

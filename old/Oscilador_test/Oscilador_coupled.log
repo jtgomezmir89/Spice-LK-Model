@@ -1,0 +1,22 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\nicol\Documents\GitHub\Spice-LK-Model\Oscilador_test\Oscilador_coupled.asc
+Start Time: Sun Dec 29 11:36:19 2024
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Node NC_01 is floating.
+
+WARNING: Less than two connections to node nc_01.  This node is used by c16.
+Direct Newton iteration for .op point succeeded.
+Ignoring empty pin current: Ix(u2:g)
+Ignoring empty pin current: Ix(u4:g)
+Ignoring empty pin current: Ix(u6:g)
+Ignoring empty pin current: Ix(u8:g)
+Ignoring empty pin current: Ix(u2:g)
+Ignoring empty pin current: Ix(u4:g)
+Ignoring empty pin current: Ix(u6:g)
+Ignoring empty pin current: Ix(u8:g)
+Total elapsed time: 31.852 seconds.
+

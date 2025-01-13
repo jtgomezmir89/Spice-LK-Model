@@ -1,0 +1,15 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\nicol\Documents\GitHub\Spice-LK-Model\Fe_leakage_model\Oscilador.asc
+Start Time: Mon Jan 13 08:30:32 2025
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = modified trap
+Unknown node in .ic card: "g1" -- ignoring
+Unknown node in .ic card: "s1" -- ignoring
+Direct Newton iteration for .op point succeeded.
+Ignoring empty pin current: Ix(u2:g)
+Ignoring empty pin current: Ix(u2:g)
+Total elapsed time: 4.810 seconds.
+

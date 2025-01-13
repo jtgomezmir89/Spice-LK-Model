@@ -1,0 +1,17 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\nicol\Documents\GitHub\Spice-LK-Model\Oscilador_test\Oscilador_coupled_transistors_test.asc
+Start Time: Mon Dec 30 14:17:44 2024
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = modified trap
+Unknown node in .ic card: "g1" -- ignoring
+Unknown node in .ic card: "s1" -- ignoring
+Unknown node in .ic card: "g2" -- ignoring
+Unknown node in .ic card: "s2" -- ignoring
+Unknown node in .ic card: "g3" -- ignoring
+Unknown node in .ic card: "s3" -- ignoring
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 28.667 seconds.
+
