@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Reading the data from the file
-file_path = "./Oscilador_coupled_transistors.txt"
+file_path = "coupled_oscilators.txt"
 data = pd.read_csv(file_path, delim_whitespace=True)
 
 # Extracting columns for plotting

@@ -1,0 +1,49 @@
+* C:\Users\MBX\Desktop\Investigacion\Spice-LK-Model\coupled_oscillators\coupled_oscillators.asc
+V1 Vdd 0 3.3
+C1 Vdd g 23p
+C2 g s 80p
+R1 g s 1e50
+R2 Vdd g 1e50
+C3 s 0 0.08µ
+V2 in 0 1
+XU1 in g fe_tanh Vc=0.20 Qo=14p K=2.62 tau=1e-5 off=-0.4 rp=1e50 cp=1e-15
+C4 Vdd g1 23p
+C5 g1 s1 80p
+R3 g1 s1 1e50
+R4 Vdd g1 1e50
+C6 s1 0 0.08µ
+XU3 in g1 fe_tanh Vc=0.20 Qo=14p K=2.62 tau=1e-5 off=-0.4 rp=1e50 cp=1e-15
+C7 s1 s {cc}
+C8 Vdd g2 23p
+C9 g2 s2 80p
+R5 g2 s2 1e50
+R6 Vdd g2 1e50
+C10 s2 0 0.08µ
+XU5 in g2 fe_tanh Vc=0.20 Qo=14p K=2.62 tau=1e-5 off=-0.4 rp=1e50 cp=1e-15
+C11 s2 s1 {cc}
+C12 Vdd g3 23p
+C13 g3 s3 80p
+R7 g3 s3 1e50
+R8 Vdd g3 1e50
+C14 s3 0 0.08µ
+XU7 in g3 fe_tanh Vc=0.20 Qo=14p K=2.62 tau=1e-5 off=-0.4 rp=1e50 cp=1e-15
+C15 s3 s2 {cc}
+C16 s3 s {cc}
+M5 Vdd g s s NMOS2
+M6 Vdd g1 s1 s1 NMOS2
+M7 Vdd g2 s2 s2 NMOS2
+M8 Vdd g3 s3 s3 NMOS2
+R9 s 0 10k
+R10 s1 0 10.5k
+R11 s2 0 10.2k
+R12 s3 0 9.95k
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\MBX\AppData\Local\LTspice\lib\cmp\standard.mos
+.ic V(g)=0.1 V(s)=0 V(g1)=0.1 V(s1)=0 V(g2)=0.1 V(s2)=0 V(g3)=0.1 V(s3)=0
+.tran 0 30m 0 1e-8 startup
+.param cc=10n
+.model NMOS2 NMOS (LEVEL=3 VTO=0.7 KP=1100u LAMBDA=0.1 W=120u L=5u TOX=10n RD=10 RS=5 CGSO=1n CGDO=1n CGBO=0 PHI=0.7 GAMMA=0.6 UO=600 VMAX=1e5 XJ=0.15u NFS=1e11 ETA=0.1 THETA=0.01)
+.lib ./fe_tanh_ni.sp
+.backanno
+.end
