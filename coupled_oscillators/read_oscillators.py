@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.gridspec import GridSpec
 
 # Reading the data from the file
-file_path = "coupled_oscillators.txt"
+file_path = "./coupled_oscillators.txt"
 data = pd.read_csv(file_path, delim_whitespace=True)
 
 # Extracting columns for plotting
@@ -36,41 +37,49 @@ v_s3_filtered2 = v_s3[time_range_mask2]
 vs_minus_vs2 = v_s1_filtered2 - v_s2_filtered2
 vs1_minus_vs3 = v_s_filtered2 - v_s3_filtered2
 
-# Creating the combined figure
-fig, axs = plt.subplots(2, 1, figsize=(10, 12), gridspec_kw={'height_ratios': [1, 2]})
+# Create figure and gridspec layout
+fig = plt.figure()
+gs = GridSpec(3, 10, height_ratios=[1, 1, 1])
 
 # First subplot: Oscillators vs time (Filtered Range)
-axs[0].plot(time_filtered1, v_s_filtered1, label="V(s)", color="#0028ff")     # Blue
-axs[0].plot(time_filtered1, v_s1_filtered1, label="V(s1)", color="#f47f15")   # Orange
-axs[0].plot(time_filtered1, v_s2_filtered1, label="V(s2)", color="#68fb0d")   # Green
-axs[0].plot(time_filtered1, v_s3_filtered1, label="V(s3)", color="#f30606")   # Red
+ax1 = fig.add_subplot(gs[0, :9])  # Use the first two columns of the top row
+ax1.plot(time_filtered1, v_s_filtered1, label="V(s)", color="#0028ff")     # Blue
+ax1.plot(time_filtered1, v_s1_filtered1, label="V(s1)", color="#f47f15")   # Orange
+ax1.plot(time_filtered1, v_s2_filtered1, label="V(s2)", color="#68fb0d")   # Green
+ax1.plot(time_filtered1, v_s3_filtered1, label="V(s3)", color="#f30606")   # Red
 
 # Set axis labels
-axs[0].set_xlabel("Time (ms)", fontsize=25)  # Updated to milliseconds
-axs[0].set_ylabel("Voltage (V)", fontsize=25)
+ax1.set_xlabel("Time (ms)", fontsize=18)  # Moved label outside
+ax1.set_ylabel("Voltage (V)", fontsize=18)
 
 # Set y-axis limits for better visualization of oscillations
-axs[0].set_ylim(0.4, 0.85)
+ax1.set_ylim(0.4, 0.85)
 
 # Adjust tick label size
-axs[0].tick_params(axis='both', which='major', labelsize=25)
-axs[0].legend(fontsize=26)
-axs[0].grid(True)
+ax1.tick_params(axis='both', which='major', labelsize=14)
 
 # Highlight the range used for the second plot
-axs[0].axvspan(Lower_mark2, Upper_mark2, color="red", alpha=0.3, label=f"Time Range ({Lower_mark2}-{Upper_mark2} ms)")
+ax1.axvspan(
+    Lower_mark2, Upper_mark2, color="red", alpha=0.3,
+)
+ax1.legend(fontsize=12, loc='upper left', bbox_to_anchor=(1.02, 0.85))
+ax1.grid(True)
 
 # Second subplot: V(s3) - V(s2) vs V(s) - V(s1)
-axs[1].plot(vs_minus_vs2, vs1_minus_vs3, color=plt.cm.winter(0.5))
+ax2 = fig.add_subplot(gs[1:, :])  # Use the entire bottom row
+ax2.plot(vs_minus_vs2, vs1_minus_vs3, color=plt.cm.winter(0.5))
 
 # Set axis labels
-axs[1].set_xlabel("V(s1) - V(s2) (V)", fontsize=25)
-axs[1].set_ylabel("V(s) - V(s3) (V)", fontsize=25)
+ax2.set_xlabel("V(s1) - V(s2) (V)", fontsize=18)
+ax2.set_ylabel("V(s) - V(s3) (V)", fontsize=18)
 
 # Adjust tick label size
-axs[1].tick_params(axis='both', which='major', labelsize=25)
+ax2.tick_params(axis='both', which='major', labelsize=14)
 
-axs[1].grid(True)
+ax2.grid(True)
+
+# Adjust layout to separate the plots vertically
+plt.subplots_adjust(hspace=0.5)  # Increased vertical and horizontal spacing
 
 # Display the plot
 plt.tight_layout()
