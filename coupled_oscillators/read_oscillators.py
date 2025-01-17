@@ -76,7 +76,7 @@ ax2.set_ylabel("V(s) - V(s3) (V)", fontsize=18)
 # Adjust tick label size
 ax2.tick_params(axis='both', which='major', labelsize=14)
 
-ax2.grid(True)
+# ax2.grid(True)
 
 # Adjust layout to separate the plots vertically
 plt.subplots_adjust(hspace=0.5)  # Increased vertical and horizontal spacing
