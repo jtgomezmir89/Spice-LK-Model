@@ -43,10 +43,10 @@ gs = GridSpec(3, 10, height_ratios=[1, 1, 1])
 
 # First subplot: Oscillators vs time (Filtered Range)
 ax1 = fig.add_subplot(gs[0, :9])  # Use the first two columns of the top row
-ax1.plot(time_filtered1, v_s_filtered1, label="V(s)", color="#0028ff")     # Blue
-ax1.plot(time_filtered1, v_s1_filtered1, label="V(s1)", color="#f47f15")   # Orange
-ax1.plot(time_filtered1, v_s2_filtered1, label="V(s2)", color="#68fb0d")   # Green
-ax1.plot(time_filtered1, v_s3_filtered1, label="V(s3)", color="#f30606")   # Red
+ax1.plot(time_filtered1, v_s_filtered1, label="V(s1)", color="#0028ff")     # Blue
+ax1.plot(time_filtered1, v_s1_filtered1, label="V(s2)", color="#f47f15")   # Orange
+ax1.plot(time_filtered1, v_s2_filtered1, label="V(s3)", color="#68fb0d")   # Green
+ax1.plot(time_filtered1, v_s3_filtered1, label="V(s4)", color="#f30606")   # Red
 
 # Set axis labels
 ax1.set_xlabel("Time (ms)", fontsize=18)  # Moved label outside
@@ -70,8 +70,8 @@ ax2 = fig.add_subplot(gs[1:, :])  # Use the entire bottom row
 ax2.plot(vs_minus_vs2, vs1_minus_vs3, color=plt.cm.winter(0.5))
 
 # Set axis labels
-ax2.set_xlabel("V(s1) - V(s2) (V)", fontsize=18)
-ax2.set_ylabel("V(s) - V(s3) (V)", fontsize=18)
+ax2.set_xlabel("V(s2) - V(s3) (V)", fontsize=18)
+ax2.set_ylabel("V(s1) - V(s4) (V)", fontsize=18)
 
 # Adjust tick label size
 ax2.tick_params(axis='both', which='major', labelsize=14)
