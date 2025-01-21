@@ -1,0 +1,35 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\nicol\Documents\GitHub\Spice-LK-Model\coupled_oscillators\Draft1.asc
+Start Time: Tue Jan 21 15:37:02 2025
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = modified trap
+v1: Missing value, assumed 0V @ DC
+v2: Missing value, assumed 0V @ DC
+.step v2=0
+.step v2=0.001
+.step v2=0.002
+.step v2=0.003
+.step v2=0.004
+.step v2=0.005
+.step v2=0.006
+.step v2=0.007
+.step v2=0.008
+.step v2=0.009
+.step v2=0.01
+.step v2=0.011
+.step v2=0.012
+.step v2=0.013
+.step v2=0.014
+.step v2=0.015
+.step v2=0.016
+.step v2=0.017
+.step v2=0.018
+.step v2=0.019
+.step v2=0.02
+.step v2=0.021
+.step v2=0.022
+Total elapsed time: 2.131 seconds.
+
